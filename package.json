@@ -1,0 +1,24 @@
+{
+  "name": "flexcolumn",
+  "version": "0.3.0",
+  "description": "A column layout system for responsive web development.",
+  "main": "FlexColumn.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cj3kim/FlexColumns.git"
+  },
+  "keywords": [
+    "famous",
+    "javascript",
+    "famo.us"
+  ],
+  "author": "cj3kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cj3kim/FlexColumns/issues"
+  },
+  "homepage": "https://github.com/cj3kim/FlexColumns"
+}
