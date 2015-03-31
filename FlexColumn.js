@@ -21,7 +21,6 @@ function FlexColumn(options) {
 FlexColumn.DEFAULT_OPTIONS = {
   gutterCol: 0,
   gutterRow: 0,
-  responsive: false,
   transition: { curve: Easing.outBack, duration: 500 }
 };
 
@@ -107,8 +106,10 @@ FlexColumn.prototype.resizeFlow = function (contextWidth) {
   _.each(this._cols, function (colObj, i) {
     var surfaces = colObj.surfaces;
     previousWidth += colObj.width;
+    var previousHeight = 0;
     _.each(surfaces, function (surface, j) {
-      var position = _calculatePosition.call(this, i, j, surface, previousWidth, contextWidth);
+      var position = _calculatePosition.call(this, i, j, surface, colObj, previousWidth, previousHeight, contextWidth);
+      previousHeight += surface.getSize()[1];
 
       if (colObj.modifiers[j] === undefined) {
         var transitionObj = _createState.call(this, position)
@@ -127,15 +128,15 @@ FlexColumn.prototype.resizeFlow = function (contextWidth) {
   }, _this);
 };
 
-function _calculatePosition (colIndex, rowIndex, surface, previousWidth, contextWidth) {
+function _calculatePosition (colIndex, rowIndex, surface, colObj, previousWidth, previousHeight, contextWidth) {
   var surfaceSize  = surface.getSize();
   var surfaceWidth = surfaceSize[0];
   var surfaceHeight = surfaceSize[1];
 
   var midAlign = _calculateMidAlign.call(this, contextWidth);
 
-  var x = colIndex * (previousWidth - surfaceWidth + this.options.gutterCol);
-  var y = rowIndex * (surfaceHeight + this.options.gutterRow);
+  var x = previousWidth - colObj.width + (colIndex * this.options.gutterCol);
+  var y =  previousHeight + (rowIndex * this.options.gutterRow);
 
   x += midAlign;
 
