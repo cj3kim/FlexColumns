@@ -5,8 +5,8 @@ A column layout system for web development in Famous.
 
 * Create and specify as many columns as needed.
 * Add surfaces or views to columns for layout.
-* You cannot add a surface to a column when it's width is larger than
-it. 
+* You cannot add a surface to a column when the surface width is larger than the
+column width. 
 * You can specify gutter rows and columns.
 
 ##TODOS
