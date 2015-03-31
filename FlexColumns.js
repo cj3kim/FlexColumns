@@ -8,7 +8,7 @@ var Easing = require('famous/transitions/Easing');
 var SpecParser = require('famous/core/SpecParser');
 var _ = require('underscore');
 
-function FlexColumn(options) {
+function FlexColumns(options) {
   View.apply(this, arguments);
   this._states = [];
   this._modifiers = [];
@@ -18,16 +18,16 @@ function FlexColumn(options) {
   this.id = Entity.register(this);
 }
 
-FlexColumn.DEFAULT_OPTIONS = {
+FlexColumns.DEFAULT_OPTIONS = {
   gutterCol: 0,
   gutterRow: 0,
   transition: { curve: Easing.outBack, duration: 500 }
 };
 
-FlexColumn.prototype = Object.create(View.prototype);
-FlexColumn.prototype.constructor = FlexColumn;
+FlexColumns.prototype = Object.create(View.prototype);
+FlexColumns.prototype.constructor = FlexColumns;
 
-FlexColumn.prototype.createCol = function (width) {
+FlexColumns.prototype.createCol = function (width) {
   function WidthException(message) {
     this.message = message;
     this.name = "WidthException";
@@ -47,7 +47,7 @@ FlexColumn.prototype.createCol = function (width) {
 };
 
 
-FlexColumn.prototype.addSurfaceToCol = function (colIndex, surface) {
+FlexColumns.prototype.addSurfaceToCol = function (colIndex, surface) {
   function SizeException(message) {
      this.message = message;
      this.name = "SizeException";
@@ -65,16 +65,16 @@ FlexColumn.prototype.addSurfaceToCol = function (colIndex, surface) {
   return this;
 };
 
-FlexColumn.prototype.getCol = function (colIndex) {
+FlexColumns.prototype.getCol = function (colIndex) {
   return this._cols[colIndex];
 };
 
 
-FlexColumn.prototype.render = function () {
+FlexColumns.prototype.render = function () {
   return this.id;
 }
 
-FlexColumn.prototype.commit = function (context) {
+FlexColumns.prototype.commit = function (context) {
   var contextWidth = context.size[0];
 
   if (this._cachedWidth !== contextWidth) {
@@ -98,7 +98,7 @@ FlexColumn.prototype.commit = function (context) {
 };
 
 
-FlexColumn.prototype.resizeFlow = function (contextWidth) {
+FlexColumns.prototype.resizeFlow = function (contextWidth) {
   //The goal of this method is to generate a modifier or adjust the transform object on it.
   var _this = this;
 
@@ -169,4 +169,4 @@ function _calculateMidAlign (contextWidth) {
   return midOffset;
 }
 
-module.exports = FlexColumn;
+module.exports = FlexColumns;
