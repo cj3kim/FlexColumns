@@ -19,6 +19,7 @@ function FlexColumns(options) {
 }
 
 FlexColumns.DEFAULT_OPTIONS = {
+  marginTop: 0,
   gutterCol: 0,
   gutterRow: 0,
   transition: { curve: Easing.outBack, duration: 500 }
@@ -139,6 +140,7 @@ function _calculatePosition (colIndex, rowIndex, surface, colObj, previousWidth,
   var y =  previousHeight + (rowIndex * this.options.gutterRow);
 
   x += midAlign;
+  y += marginTop;
 
   return [x,y,0];
 }
