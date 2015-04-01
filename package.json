@@ -1,6 +1,6 @@
 {
   "name": "flex-columns",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "A column layout system for responsive web development.",
   "main": "FlexColumns.js",
   "scripts": {
