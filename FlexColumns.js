@@ -140,7 +140,7 @@ function _calculatePosition (colIndex, rowIndex, surface, colObj, previousWidth,
   var y =  previousHeight + (rowIndex * this.options.gutterRow);
 
   x += midAlign;
-  y += marginTop;
+  y += this.options.marginTop;
 
   return [x,y,0];
 }
