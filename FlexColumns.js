@@ -19,6 +19,7 @@ function FlexColumns(options) {
 }
 
 FlexColumns.DEFAULT_OPTIONS = {
+  midAlign: true,
   marginTop: 0,
   gutterCol: 0,
   gutterRow: 0,
@@ -134,12 +135,15 @@ function _calculatePosition (colIndex, rowIndex, surface, colObj, previousWidth,
   var surfaceWidth = surfaceSize[0];
   var surfaceHeight = surfaceSize[1];
 
-  var midAlign = _calculateMidAlign.call(this, contextWidth);
 
   var x = previousWidth - colObj.width + (colIndex * this.options.gutterCol);
   var y =  previousHeight + (rowIndex * this.options.gutterRow);
 
-  x += midAlign;
+  if (this.options.midAlign === true) {
+    var midAlign = _calculateMidAlign.call(this, contextWidth);
+    x += midAlign;
+  }
+
   y += this.options.marginTop;
 
   return [x,y,0];
