@@ -92,7 +92,7 @@ FlexColumns.prototype.commit = function (context) {
 
     var spec = modifier.modify(target);
     spec.transform = Transform.multiply4x4(spec.transform, context.transform);
-
+    spec.opacity = context.opacity; //TODO look into a better way to deal with specs.
     specs.push(spec);
   }
   return specs;
